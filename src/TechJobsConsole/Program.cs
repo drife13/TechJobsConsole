@@ -129,6 +129,7 @@ namespace TechJobsConsole
                     {
                         Console.WriteLine(column.Key + ": " + column.Value);
                     }
+                    Console.WriteLine("*****\n");
                     i++;
                 }
             }
