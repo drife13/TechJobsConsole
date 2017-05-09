@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace TechJobsConsole
 {
@@ -64,12 +65,12 @@ namespace TechJobsConsole
                     if (columnChoice.Equals("all"))
                     {
                         searchResults = JobData.FindByValue(searchTerm);
-                        PrintJobs(searchResults);
+                        PrintJobs(searchResults.AsReadOnly());
                     }
                     else
                     {
                         searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
-                        PrintJobs(searchResults);
+                        PrintJobs(searchResults.AsReadOnly());
                     }
                 }
             }
@@ -117,7 +118,7 @@ namespace TechJobsConsole
             return choiceKeys[choiceIdx];
         }
 
-        private static void PrintJobs(List<Dictionary<string, string>> someJobs)
+        private static void PrintJobs(ReadOnlyCollection<Dictionary<string, string>> someJobs)
         {
             if (someJobs.Count > 0)
             {
